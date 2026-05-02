@@ -1,5 +1,5 @@
 - name: install htop monitoring
-  hosts: web, DB
+  hosts: c_host, DB, monitoing, control
   become: true
   tasks:
   - name: update cache

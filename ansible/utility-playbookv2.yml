@@ -1,0 +1,17 @@
+- name: update package cache and install htop and tree packages
+  hosts: web, DB
+  become: true
+  tasks: 
+    - name: update package cache
+      apt:
+        update_cache: yes
+
+    - name: Install htop and tree
+      apt:
+        name: 
+          - htop
+          - tree
+        state: present
+
+
+

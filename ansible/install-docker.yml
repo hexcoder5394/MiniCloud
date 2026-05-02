@@ -1,0 +1,22 @@
+- name: install the docker using the repo
+  hosts: DB
+  become: true
+  tasks:
+
+    - name: docker install
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: present
+
+    - name: start docker servicees
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+

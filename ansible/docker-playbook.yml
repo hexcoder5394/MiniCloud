@@ -1,0 +1,52 @@
+- name: intall docker on monitoring server
+  hosts: DB
+  become: true
+  vars:
+    docker_repo_url: "https://download.docker.com/linux/ubuntu"
+    docker_gpg_url: "https://download.docker.com/linux/ubuntu/gpg"
+    docker_keyring_path: "/etc/apt/keyrings/docker.asc"
+
+  tasks:
+  - name: update the package cache
+    apt:
+      update_cache: yes
+
+  - name: install the package
+    apt:
+      name: 
+        - ca-certificates
+        - curl
+      state: present
+
+  - name: create keyring directory
+    file:
+      path: /etc/apt/keyrings
+      state: directory
+      mode: '0755'
+
+  - name: download docker gpg key
+    get_url:
+      url: "{{ docker_gpg_url }}"
+      dest: "{{ docker_keyring_path }}"
+      mode: '0644'
+
+  - name: get ubuntu code name
+    shell: . /etc/os-release && echo $VERSION_CODENAME
+    register: ubuntu_codename
+    changed_when: false
+
+  - name: get system architecture
+    command: dpkg --print-architecture
+    register: architecture
+    changed_when: false
+
+  - name: Add Docker repo (safe method)
+    apt_repository:
+      repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+      state: present
+
+  - name: update cache after adding the repo
+    apt:
+      update_cache: yes
+
+

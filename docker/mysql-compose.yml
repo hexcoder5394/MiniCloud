@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1@OlewiSh
+      MYSQL_USER: minicloud
+      MYSQL_PASSWORD: 1@OlewiSh
+      MYSQL_DATABASE: minicloud_db
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - mysql_config:/etc/mysql
+      - mysql_logs:/var/log/mysql
+
+volumes:
+  mysql_data:
+  mysql_config:
+  mysql_logs:

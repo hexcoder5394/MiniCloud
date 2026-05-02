@@ -1,0 +1,22 @@
+services:
+    semaphoreui:
+        ports:
+            - 3000:3000
+        image: semaphoreui/semaphore:v2.17.26
+        environment:
+            SEMAPHORE_DB_DIALECT: mysql
+            SEMAPHORE_DB_HOST: 192.168.8.153:3306
+            SEMAPHORE_DB_NAME: minicloud_db
+            SEMAPHORE_DB_USER: minicloud
+            SEMAPHORE_DB_PASS: 1@OlewiSh
+            SEMAPHORE_ADMIN: admin
+            SEMAPHORE_ADMIN_PASSWORD: 1@OlewiSh
+            SEMAPHORE_ADMIN_NAME: admin
+            SEMAPHORE_ADMIN_EMAIL: achintha.jayalal@outlook.com
+            SEMAPHORE_PORT: "3000"
+        volumes:
+            - semaphore_data:/var/lib/semaphore
+            - semaphore_config:/etc/semaphore
+volumes:
+    semaphore_data:
+    semaphore_config:

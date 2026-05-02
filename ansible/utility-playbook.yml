@@ -1,0 +1,18 @@
+- name: install htop monitoring
+  hosts: web, DB
+  become: true
+  tasks:
+  - name: update cache
+    apt:
+      update_cache: yes
+  
+  - name: install htop
+    apt:
+      name: htop
+      state: present
+
+
+  - name: install tree
+    apt:
+      name: tree
+      state: present

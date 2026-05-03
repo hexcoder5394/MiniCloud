@@ -1,6 +1,6 @@
 - name: install htop monitoring
   hosts: c_host, DB, monitoing, control
-  become: true
+  become: yes
   tasks:
   - name: update cache
     apt:

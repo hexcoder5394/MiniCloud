@@ -1,5 +1,5 @@
 - name: intall docker on monitoring server
-  hosts: DB
+  hosts: all
   become: true
   vars:
     docker_repo_url: "https://download.docker.com/linux/ubuntu"

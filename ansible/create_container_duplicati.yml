@@ -1,0 +1,6 @@
+- name: create duplicati container in docker
+  hosts: all
+  become: yes
+  tasks:
+    - name: run timezone checker
+      script: ../Bash/duplicati.sh

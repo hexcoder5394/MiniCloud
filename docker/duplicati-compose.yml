@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: duplicati
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Colombo
+      - SETTINGS_ENCRYPTION_KEY=1@OlewiSh
+      - CLI_ARGS=--webservice-password=1@OlewiSh
+    volumes:
+      - ./config:/config
+      - /var/lib/docker/volumes:/source:ro
+      - ./backups:/backups
+    ports:
+      - 8200:8200
+    restart: unless-stopped

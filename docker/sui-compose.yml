@@ -7,11 +7,11 @@ services:
             SEMAPHORE_DB_DIALECT: mysql
             SEMAPHORE_DB_HOST: 192.168.8.153:3306
             SEMAPHORE_DB_NAME: minicloud_db
-            SEMAPHORE_DB_USER: minicloud
-            SEMAPHORE_DB_PASS: 1@OlewiSh
-            SEMAPHORE_ADMIN: admin
-            SEMAPHORE_ADMIN_PASSWORD: 1@OlewiSh
-            SEMAPHORE_ADMIN_NAME: admin
+            SEMAPHORE_DB_USER: mcadmin
+            SEMAPHORE_DB_PASS: 5394
+            SEMAPHORE_ADMIN: mcadmin
+            SEMAPHORE_ADMIN_PASSWORD: 5394
+            SEMAPHORE_ADMIN_NAME: mcadmin
             SEMAPHORE_ADMIN_EMAIL: achintha.jayalal@outlook.com
             SEMAPHORE_PORT: "3000"
         volumes:

@@ -1,0 +1,24 @@
+services:
+
+  node_exporter:
+    image: prom/node-exporter:v1.5.0
+    container_name: node_exporter
+    ports:
+      - "9100:9100"
+    restart: unless-stopped
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/host:ro,rslave
+      - /:/rootfs=/host
+
+  portainer_agent:
+    image: portainer/agent:2.39.1
+    container_name: portainer_agent
+    ports:
+      - "9001:9001"
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/volumes:/var/lib/docker/volumes
+      - /:/host

@@ -1,5 +1,5 @@
 - name: install htop monitoring
-  hosts: c_host, DB, monitoing, control
+  hosts: all
   become: yes
   tasks:
     - name: run timezone checker

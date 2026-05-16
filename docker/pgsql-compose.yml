@@ -1,22 +1,28 @@
-version: "3.4"
-
 services:
-  postgresql:
-    image: docker.io/library/postgres:16-alpine
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
-      start_period: 20s
-      interval: 30s
-      retries: 5
-      timeout: 5s
-    volumes:
-      - database:/var/lib/postgresql/data
+
+  db:
+    image: postgres:latest
+    container_name: pgsql
+    restart: always
     environment:
-      POSTGRES_PASSWORD: ${PG_PASS}
-      POSTGRES_USER: authentik
-      POSTGRES_DB: authentik
+      POSTGRES_USER: mcadmin
+      POSTGRES_PASSWORD: 5394
+      POSTGRES_DB: mcdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: infra.labs@outlook.com
+    ports:
+      - "8080:8080"
 
 volumes:
-  database:
-    driver: local
+  pgdata:
+
+  

@@ -1,0 +1,6 @@
+- name: create postgresql container in docker
+  hosts: db
+  become: yes
+  tasks:
+    - name: run timezone checker
+      script: ../Bash/pgsql.sh

@@ -1,0 +1,6 @@
+- name: create portainer_agent container in docker
+  hosts: uat
+  become: yes
+  tasks:
+    - name: run portainer_agent container
+      script: ../Bash/ptagent.sh

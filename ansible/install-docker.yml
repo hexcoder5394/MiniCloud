@@ -1,5 +1,5 @@
 - name: install the docker using the repo
-  hosts: all
+  hosts: uat
   become: true
   tasks:
 
